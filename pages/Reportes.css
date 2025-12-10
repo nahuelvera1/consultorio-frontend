@@ -1,0 +1,6 @@
+/* Reportes.css */
+@import './Home.css';
+
+.reportes-wrap { padding:30px; max-width:1100px; margin:0 auto; }
+.reportes-cards { display:grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap:20px; }
+.reportes-table { background:white; border-radius:12px; box-shadow:var(--shadow-card); }

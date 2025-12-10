@@ -1,0 +1,6 @@
+/* Precios.css */
+@import './Home.css';
+
+.precios-wrap { padding:30px; max-width:1000px; margin:0 auto; }
+.precios-form { background:#f8f9fa; padding:20px; border-radius:12px; }
+.precios-table { width:100%; border-collapse:collapse; }

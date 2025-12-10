@@ -1,0 +1,6 @@
+/* Ficha.css */
+@import './Home.css';
+
+.ficha-wrap { padding:30px; }
+.ficha-grid { display:grid; grid-template-columns: 1fr 360px; gap:20px; }
+.ficha-card { background:white; padding:18px; border-radius:12px; box-shadow:var(--shadow-card); }

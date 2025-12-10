@@ -1,0 +1,6 @@
+/* Configuracion.css - basados en paleta Home */
+@import './Home.css';
+
+.config-wrap { padding:30px; max-width:900px; margin:0 auto; }
+.config-card { background:white; padding:20px; border-radius:12px; box-shadow:var(--shadow-card); margin-bottom:20px; }
+.config-table th, .config-table td { padding:10px; }

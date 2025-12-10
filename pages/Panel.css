@@ -1,0 +1,6 @@
+/* Panel.css */
+@import './Home.css';
+
+.panel-wrap { padding:30px; }
+.panel-card { background:white; padding:20px; border-radius:12px; box-shadow:var(--shadow-card); }
+.panel-split { display:flex; gap:20px; }
