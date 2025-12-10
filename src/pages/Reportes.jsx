@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import './Reportes.css';
-
 function Reportes() {
   const navigate = useNavigate()
   const [pagos, setPagos] = useState([])
@@ -46,7 +44,7 @@ function Reportes() {
 
   // 2. AHORA SÍ EL EFECTO (Ya conoce la función de arriba)
   useEffect(() => {
-    fetch('http://localhost:3000/pagos')
+    fetch('https://api-consultorio-usf0.onrender.com/pagos')
       .then(res => res.json())
       .then(data => {
         setPagos(data);

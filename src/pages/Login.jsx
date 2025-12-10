@@ -20,7 +20,7 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    fetch('http://localhost:3000/login', {
+  fetch('https://api-consultorio-usf0.onrender.com/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(datos)

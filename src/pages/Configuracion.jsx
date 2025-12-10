@@ -14,8 +14,8 @@ function Configuracion() {
   const [usuarios, setUsuarios] = useState([]) // Lista para gestionar roles
 
   // --- CARGAR LISTA DE USUARIOS ---
-  const cargarUsuarios = () => {
-    fetch('http://localhost:3000/usuarios')
+    const cargarUsuarios = () => {
+        fetch('https://api-consultorio-usf0.onrender.com/usuarios')
       .then(res => res.json())
       .then(data => {
         // Excluimos al usuario logueado para que no se cambie el rol a sí mismo por error
@@ -37,7 +37,7 @@ function Configuracion() {
       e.preventDefault();
       if(passData.nueva !== passData.confirmar) return alert("Las contraseñas nuevas no coinciden");
 
-      fetch('http://localhost:3000/cambiar-password', {
+    fetch('https://api-consultorio-usf0.onrender.com/cambiar-password', {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -61,7 +61,7 @@ function Configuracion() {
       const roles = { 1: "ADMIN", 2: "DENTISTA", 3: "PACIENTE" };
       if(!window.confirm(`¿Estás segura de cambiar a ${nombre} al rol de ${roles[nuevoRol]}?`)) return;
 
-      fetch('http://localhost:3000/cambiar-rol', {
+    fetch('https://api-consultorio-usf0.onrender.com/cambiar-rol', {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ usuario_id: idUsuario, nuevo_rol: nuevoRol })

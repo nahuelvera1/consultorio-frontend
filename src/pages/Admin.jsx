@@ -25,15 +25,15 @@ function Admin() {
 
   // --- CARGA DE DATOS ---
   const cargarAgenda = () => {
-    fetch('http://localhost:3000/turnos')
+   fetch('https://api-consultorio-usf0.onrender.com/turnos')
       .then(res => res.json())
       .then(data => setTurnos(data))
       .catch(err => console.error("Error agenda:", err))
   }
 
-  useEffect(() => {
-    fetch('http://localhost:3000/tratamientos').then(res => res.json()).then(setCatalogo)
-  }, [])
+   useEffect(() => {
+      fetch('https://api-consultorio-usf0.onrender.com/tratamientos').then(res => res.json()).then(setCatalogo)
+   }, [])
 
   useEffect(() => {
     if (!usuario) { navigate('/login'); } 
@@ -45,7 +45,7 @@ function Admin() {
   // --- FUNCIONES LOGICAS ---
   const cancelarTurno = (id) => {
     if(!window.confirm("¿Cancelar turno?")) return;
-    fetch(`http://localhost:3000/cancelar-turno/${id}`, { method: 'PUT' })
+   fetch(`https://api-consultorio-usf0.onrender.com/cancelar-turno/${id}`, { method: 'PUT' })
       .then(() => { cargarAgenda(); })
   }
 
@@ -85,7 +85,7 @@ function Admin() {
 
   const confirmarCobro = (e) => {
       e.preventDefault();
-      fetch('http://localhost:3000/cobrar', {
+   fetch('https://api-consultorio-usf0.onrender.com/cobrar', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ turno_id: turnoACobrar.id, total: totalCalculado, items: seleccionados, notas: 'Admin' })

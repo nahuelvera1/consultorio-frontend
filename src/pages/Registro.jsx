@@ -17,8 +17,8 @@ function Registro() {
   const handleSubmit = (e) => {
     e.preventDefault()
     
-    // Enviamos los datos (el backend verificará si ya existen)
-    fetch('http://localhost:3000/crear-paciente', {
+  // Enviamos los datos (el backend verificará si ya existen)
+  fetch('https://api-consultorio-usf0.onrender.com/crear-paciente', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formulario)
