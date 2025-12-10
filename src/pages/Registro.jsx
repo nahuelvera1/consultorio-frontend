@@ -1,3 +1,4 @@
+import React from 'react'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import './Registro.css';
@@ -93,5 +94,6 @@ function Registro() {
 }
 
 const estiloInput = { padding: '10px', borderRadius: '5px', border: '1px solid #ccc', width: '100%', boxSizing: 'border-box' }
+
 
 export default Registro
