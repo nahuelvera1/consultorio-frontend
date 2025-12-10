@@ -1,0 +1,6 @@
+/* Registro.css */
+@import './Home.css';
+
+.registro-wrap { padding:40px; max-width:640px; margin:0 auto; }
+.registro-card { background:#f9f9f9; padding:30px; border-radius:12px; box-shadow:var(--shadow-card); }
+.registro-input { padding:12px; border-radius:8px; border:1px solid #ddd; }

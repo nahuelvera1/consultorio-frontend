@@ -1,0 +1,6 @@
+/* Pacientes.css */
+@import './Home.css';
+
+.pacientes-wrap { padding:30px; }
+.paciente-card { background:white; padding:16px; border-radius:10px; box-shadow:var(--shadow-card); }
+.pacientes-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:16px; }
