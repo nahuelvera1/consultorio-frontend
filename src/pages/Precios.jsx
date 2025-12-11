@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -78,6 +79,5 @@ function Precios() {
     </div>
   )
 }
-
 
 export default Precios
