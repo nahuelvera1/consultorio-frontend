@@ -33,7 +33,7 @@ function Admin() {
   }
 
    useEffect(() => {
-      fetch('https://api-consultorio-usf0.onrender.com/tratamientos').then(res => res.json()).then(setCatalogo)
+      fetch('https://api-consultorio-usf9.onrender.com/tratamientos').then(res => res.json()).then(setCatalogo)
    }, [])
 
   useEffect(() => {
@@ -46,7 +46,7 @@ function Admin() {
   // --- FUNCIONES LOGICAS ---
   const cancelarTurno = (id) => {
     if(!window.confirm("¿Cancelar turno?")) return;
-   fetch(`https://api-consultorio-usf0.onrender.com/cancelar-turno/${id}`, { method: 'PUT' })
+   fetch(`https://api-consultorio-usf9.onrender.com/cancelar-turno/${id}`, { method: 'PUT' })
       .then(() => { cargarAgenda(); })
   }
 
@@ -86,7 +86,7 @@ function Admin() {
 
   const confirmarCobro = (e) => {
       e.preventDefault();
-   fetch('https://api-consultorio-usf0.onrender.com/cobrar', {
+   fetch('https://api-consultorio-usf9.onrender.com/cobrar', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ turno_id: turnoACobrar.id, total: totalCalculado, items: seleccionados, notas: 'Admin' })
@@ -227,5 +227,6 @@ function Admin() {
     </div>
   )
 }
+
 
 export default Admin
