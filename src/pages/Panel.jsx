@@ -27,7 +27,7 @@ function Panel() {
   // NUEVO: Estado para mostrar/ocultar el historial
   const [verHistorial, setVerHistorial] = useState(false)
 
-  const TELEFONO_DENTISTA = "5493815555555"; 
+  const TELEFONO_DENTISTA = "5493815565555"; 
 
   // --- FUNCIONES AUXILIARES ---
   const esTurnoFuturo = (fecha, hora) => {
@@ -52,10 +52,10 @@ function Panel() {
 
   // --- CARGAS ---
   const cargarMisTurnos = (id) => {
-  fetch(`https://api-consultorio-usf0.onrender.com/turnos-paciente/${id}`).then(res => res.json()).then(setMisTurnos)
+  fetch(`https://api-consultorio-usf9.onrender.com/turnos-paciente/${id}`).then(res => res.json()).then(setMisTurnos)
   }
   const cargarDentistas = () => {
-  fetch('https://api-consultorio-usf0.onrender.com/usuarios').then(res => res.json()).then(data => setDentistas(data.filter(u => u.rol_id === 2)))
+  fetch('https://api-consultorio-usf9.onrender.com/usuarios').then(res => res.json()).then(data => setDentistas(data.filter(u => u.rol_id === 2)))
   }
 
   useEffect(() => {
@@ -64,7 +64,7 @@ function Panel() {
 
   useEffect(() => {
     if (nuevoTurno.dentista_id && nuevoTurno.fecha) {
-  fetch(`https://api-consultorio-usf0.onrender.com/horarios-disponibles?fecha=${nuevoTurno.fecha}&dentista_id=${nuevoTurno.dentista_id}`)
+  fetch(`https://api-consultorio-usf9.onrender.com/horarios-disponibles?fecha=${nuevoTurno.fecha}&dentista_id=${nuevoTurno.dentista_id}`)
             .then(res => res.json()).then(setHorariosLibres)
     }
   }, [nuevoTurno.dentista_id, nuevoTurno.fecha])
@@ -73,7 +73,7 @@ function Panel() {
     e.preventDefault();
     if(!nuevoTurno.hora) return alert("Selecciona un horario.");
     const motivoCompleto = `[${nuevoTurno.tipo}] ${nuevoTurno.motivo}`;
-  fetch('https://api-consultorio-usf0.onrender.com/crear-turno', {
+  fetch('https://api-consultorio-usf9.onrender.com/crear-turno', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ paciente_id: usuario.id, dentista_id: nuevoTurno.dentista_id, fecha: nuevoTurno.fecha, hora: nuevoTurno.hora, motivo_consulta: motivoCompleto })
     }).then(res => {
@@ -84,7 +84,7 @@ function Panel() {
   const abrirModalCancelar = (turno) => { setTurnoParaCancelar(turno); setModalVisible(true); }
   const confirmarCancelacion = () => {
     if (!turnoParaCancelar) return;
-  fetch(`https://api-consultorio-usf0.onrender.com/cancelar-turno/${turnoParaCancelar.id}`, { method: 'PUT' }).then(() => { cargarMisTurnos(usuario.id); setModalVisible(false); setTurnoParaCancelar(null); })
+  fetch(`https://api-consultorio-usf9.onrender.com/cancelar-turno/${turnoParaCancelar.id}`, { method: 'PUT' }).then(() => { cargarMisTurnos(usuario.id); setModalVisible(false); setTurnoParaCancelar(null); })
   }
 
   const handleReconfirmar = (turno) => {
@@ -228,4 +228,5 @@ function Panel() {
 const estiloOverlay = { position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.5)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 1000 }
 const estiloModal = { background: 'white', padding: '30px', borderRadius: '10px', width: '300px', textAlign: 'center' }
 const estiloInput = { padding: '10px', borderRadius: '5px', border: '1px solid #ccc' }
+
 export default Panel
