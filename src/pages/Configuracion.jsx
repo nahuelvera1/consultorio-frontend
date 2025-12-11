@@ -16,7 +16,7 @@ function Configuracion() {
 
   // --- CARGAR LISTA DE USUARIOS ---
     const cargarUsuarios = () => {
-        fetch('https://api-consultorio-usf0.onrender.com/usuarios')
+        fetch('https://api-consultorio-usf9.onrender.com/usuarios')
       .then(res => res.json())
       .then(data => {
         // Excluimos al usuario logueado para que no se cambie el rol a sí mismo por error
@@ -38,7 +38,7 @@ function Configuracion() {
       e.preventDefault();
       if(passData.nueva !== passData.confirmar) return alert("Las contraseñas nuevas no coinciden");
 
-    fetch('https://api-consultorio-usf0.onrender.com/cambiar-password', {
+    fetch('https://api-consultorio-usf9.onrender.com/cambiar-password', {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -141,5 +141,6 @@ function Configuracion() {
 }
 
 const estiloInput = { padding: '10px', borderRadius: '5px', border: '1px solid #ccc' }
+
 
 export default Configuracion
