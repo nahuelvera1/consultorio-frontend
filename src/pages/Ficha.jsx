@@ -25,15 +25,15 @@ function Ficha() {
 
   // --- CARGAS ---
   const cargarHistoria = () => {
-    fetch(`https://api-consultorio-usf0.onrender.com/historia/${id}`).then(res => res.json()).then(setHistoria);
+    fetch(`https://api-consultorio-usf9.onrender.com/historia/${id}`).then(res => res.json()).then(setHistoria);
   }
   const cargarArchivos = () => {
-    fetch(`https://api-consultorio-usf0.onrender.com/archivos/${id}`).then(res => res.json()).then(setArchivos);
+    fetch(`https://api-consultorio-usf9.onrender.com/archivos/${id}`).then(res => res.json()).then(setArchivos);
   }
 
   useEffect(() => {
     // Cargar PACIENTE
-    fetch(`https://api-consultorio-usf0.onrender.com/usuarios/${id}`)
+    fetch(`https://api-consultorio-usf9.onrender.com/usuarios/${id}`)
       .then(res => {
           if (!res.ok) throw new Error("Paciente no encontrado");
           return res.json();
@@ -51,7 +51,7 @@ function Ficha() {
 
   // --- GUARDAR CAMBIOS DE EDICIÓN ---
   const guardarEdicion = () => {
-    fetch(`https://api-consultorio-usf0.onrender.com/pacientes/${id}`, {
+    fetch(`https://api-consultorio-usf9.onrender.com/pacientes/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(datosEditables)
@@ -69,7 +69,7 @@ function Ficha() {
   // --- OTROS MANEJADORES ---
   const handleGuardarNota = (e) => {
     e.preventDefault();
-    fetch('https://api-consultorio-usf0.onrender.com/historia', {
+    fetch('https://api-consultorio-usf9.onrender.com/historia', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ paciente_id: id, dentista_id: doctor.id, observaciones: nuevaNota.observacion, diente: nuevaNota.diente })
     }).then(() => { setNuevaNota({ observacion: '', diente: '' }); cargarHistoria(); })
@@ -216,5 +216,6 @@ function Ficha() {
     </div>
   )
 }
+
 
 export default Ficha
