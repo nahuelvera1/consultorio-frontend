@@ -45,7 +45,7 @@ function Reportes() {
 
   // 2. AHORA SÍ EL EFECTO (Ya conoce la función de arriba)
   useEffect(() => {
-    fetch('https://api-consultorio-usf0.onrender.com/pagos')
+    fetch('https://api-consultorio-usf9.onrender.com/pagos')
       .then(res => res.json())
       .then(data => {
         setPagos(data);
@@ -146,5 +146,6 @@ function Reportes() {
 
 const estiloCard = { background: 'white', padding: '20px', borderRadius: '10px', boxShadow: '0 4px 10px rgba(0,0,0,0.1)' }
 const estiloInput = { padding: '8px', borderRadius: '5px', border: '1px solid #ccc' }
+
 
 export default Reportes
