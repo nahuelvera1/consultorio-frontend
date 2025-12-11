@@ -25,15 +25,15 @@ function Ficha() {
 
   // --- CARGAS ---
   const cargarHistoria = () => {
-    fetch(`https://api-consultorio-usf0.onrender.com/historia/${id}`).then(res => res.json()).then(setHistoria);
+    fetch(`https://api-consultorio-usf9.onrender.com/historia/${id}`).then(res => res.json()).then(setHistoria);
   }
   const cargarArchivos = () => {
-    fetch(`https://api-consultorio-usf0.onrender.com/archivos/${id}`).then(res => res.json()).then(setArchivos);
+    fetch(`https://api-consultorio-usf9.onrender.com/archivos/${id}`).then(res => res.json()).then(setArchivos);
   }
 
   useEffect(() => {
     // Cargar PACIENTE
-    fetch(`https://api-consultorio-usf0.onrender.com/usuarios/${id}`)
+    fetch(`https://api-consultorio-usf9.onrender.com/usuarios/${id}`)
       .then(res => {
           if (!res.ok) throw new Error("Paciente no encontrado");
           return res.json();
@@ -51,7 +51,7 @@ function Ficha() {
 
   // --- GUARDAR CAMBIOS DE EDICIÓN ---
   const guardarEdicion = () => {
-    fetch(`https://api-consultorio-usf0.onrender.com/pacientes/${id}`, {
+    fetch(`https://api-consultorio-usf9.onrender.com/pacientes/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(datosEditables)
@@ -69,7 +69,7 @@ function Ficha() {
   // --- OTROS MANEJADORES ---
   const handleGuardarNota = (e) => {
     e.preventDefault();
-    fetch('https://api-consultorio-usf0.onrender.com/historia', {
+    fetch('https://api-consultorio-usf9.onrender.com/historia', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ paciente_id: id, dentista_id: doctor.id, observaciones: nuevaNota.observacion, diente: nuevaNota.diente })
     }).then(() => { setNuevaNota({ observacion: '', diente: '' }); cargarHistoria(); })
@@ -80,7 +80,7 @@ function Ficha() {
     if (!archivoSelect) return alert("Selecciona un archivo");
     const formData = new FormData();
     formData.append('archivo', archivoSelect); formData.append('paciente_id', id); formData.append('tipo', tipoArchivo);
-    fetch('https://api-consultorio-usf0.onrender.com/subir-archivo', { method: 'POST', body: formData })
+    fetch('https://api-consultorio-usf9.onrender.com/subir-archivo', { method: 'POST', body: formData })
     .then(() => { alert("Archivo subido!"); setArchivoSelect(null); document.getElementById('fileInput').value = ""; cargarArchivos(); })
   }
 
@@ -204,8 +204,8 @@ function Ficha() {
             <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(100px, 1fr))', gap: '10px'}}>
                 {archivos.map(a => (
                     <div key={a.id} style={{border: '1px solid #ddd', borderRadius: '5px', overflow: 'hidden', background:'white'}}>
-                        <a href={`https://api-consultorio-usf0.onrender.com/uploads/${a.ruta_archivo}`} target="_blank" rel="noreferrer" style={{textDecoration:'none'}}>
-                            {a.nombre_archivo.match(/\.(jpg|jpeg|png)$/i) ? <img src={`https://api-consultorio-usf0.onrender.com/uploads/${a.ruta_archivo}`} style={{width: '100%', height: '100px', objectFit: 'cover'}} /> : <div style={{height: '100px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f5f5f5', color:'#555'}}>📄</div>}
+                        <a href={`https://api-consultorio-usf9.onrender.com/uploads/${a.ruta_archivo}`} target="_blank" rel="noreferrer" style={{textDecoration:'none'}}>
+                            {a.nombre_archivo.match(/\.(jpg|jpeg|png)$/i) ? <img src={`https://api-consultorio-usf9.onrender.com/uploads/${a.ruta_archivo}`} style={{width: '100%', height: '100px', objectFit: 'cover'}} /> : <div style={{height: '100px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f5f5f5', color:'#555'}}>📄</div>}
                             <div style={{padding: '5px', fontSize: '10px', textAlign: 'center'}}>{a.tipo}</div>
                         </a>
                     </div>

@@ -1,4 +1,5 @@
 
+import React from 'react'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './Precios.css';
@@ -10,7 +11,7 @@ function Precios() {
 
   // 1. PRIMERO DEFINIMOS LA FUNCIÓN (Así React ya la conoce)
   const cargarPrecios = () => {
-    fetch('https://api-consultorio-usf0.onrender.com/tratamientos')
+  fetch('https://api-consultorio-usf9.onrender.com/tratamientos')
       .then(res => res.json())
       .then(setLista)
       .catch(err => console.error("Error cargando precios:", err))
@@ -27,7 +28,7 @@ function Precios() {
     e.preventDefault();
     if(!nuevo.nombre || !nuevo.precio) return;
     
-  fetch('https://api-consultorio-usf0.onrender.com/tratamientos', {
+  fetch('https://api-consultorio-usf9.onrender.com/tratamientos', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(nuevo)
@@ -39,7 +40,7 @@ function Precios() {
 
   const borrar = (id) => {
     if(window.confirm("¿Borrar de la lista?")) {
-  fetch(`https://api-consultorio-usf0.onrender.com/tratamientos/${id}`, { method: 'DELETE' })
+  fetch(`https://api-consultorio-usf9.onrender.com/tratamientos/${id}`, { method: 'DELETE' })
         .then(() => cargarPrecios())
     }
   }

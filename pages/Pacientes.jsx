@@ -20,7 +20,7 @@ function Pacientes() {
   })
 
   const cargarPacientes = () => {
-    fetch('https://api-consultorio-usf0.onrender.com/usuarios')
+    fetch('https://api-consultorio-usf9.onrender.com/usuarios')
       .then(res => res.json())
       .then(data => {
         const soloPacientes = data.filter(u => u.rol_id === 3);
@@ -43,7 +43,7 @@ function Pacientes() {
       e.preventDefault();
       if(!datosTurno.fecha || !datosTurno.hora || !datosTurno.motivo) return alert("Faltan datos");
 
-    fetch('https://api-consultorio-usf0.onrender.com/crear-turno', {
+    fetch('https://api-consultorio-usf9.onrender.com/crear-turno', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

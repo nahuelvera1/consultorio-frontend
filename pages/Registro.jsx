@@ -19,7 +19,7 @@ function Registro() {
     e.preventDefault()
     
   // Enviamos los datos (el backend verificará si ya existen)
-  fetch('https://api-consultorio-usf0.onrender.com/crear-paciente', {
+  fetch('https://api-consultorio-usf9.onrender.com/crear-paciente', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formulario)
