@@ -20,7 +20,7 @@ function Pacientes() {
   })
 
   const cargarPacientes = () => {
-    fetch('https://api-consultorio-usf0.onrender.com/usuarios')
+    fetch('https://api-consultorio-usf9.onrender.com/usuarios')
       .then(res => res.json())
       .then(data => {
         const soloPacientes = data.filter(u => u.rol_id === 3);
@@ -43,7 +43,7 @@ function Pacientes() {
       e.preventDefault();
       if(!datosTurno.fecha || !datosTurno.hora || !datosTurno.motivo) return alert("Faltan datos");
 
-    fetch('https://api-consultorio-usf0.onrender.com/crear-turno', {
+    fetch('https://api-consultorio-usf9.onrender.com/crear-turno', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -150,5 +150,6 @@ function Pacientes() {
 const estiloOverlay = { position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.5)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 1000 }
 const estiloModal = { background: 'white', padding: '30px', borderRadius: '10px', width: '90%', maxWidth: '400px', boxShadow: '0 5px 15px rgba(0,0,0,0.3)' }
 const estiloInput = { padding: '10px', borderRadius: '5px', border: '1px solid #ccc', width: '100%', boxSizing: 'border-box' }
+
 
 export default Pacientes
